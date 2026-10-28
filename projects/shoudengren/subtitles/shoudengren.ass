@@ -1,0 +1,21 @@
+[Script Info]
+Title: Mandarin Factory Subtitles
+ScriptType: v4.00+
+PlayResX: 1920
+PlayResY: 1080
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Noto Sans CJK SC,52,&H00FFFFFF,&H000000FF,&HAA000000,&H64000000,0,0,0,0,100,100,0,0,1,2.4,0.8,2,60,60,64,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:02.15,0:00:06.77,Default,,0,0,0,,{\fad(120,180)}在东海最远的礁石上，有一座灯塔，亮了一百一十年。
+Dialogue: 0,0:00:07.07,0:00:13.21,Default,,0,0,0,,{\fad(120,180)}守灯人老周，每天爬一百二十八级台阶，只为在天黑之前，把灯点亮。
+Dialogue: 0,0:00:13.51,0:00:18.58,Default,,0,0,0,,{\fad(120,180)}他常说，灯亮着，海上的人，心里就有一条回家的路。
+Dialogue: 0,0:00:18.88,0:00:25.49,Default,,0,0,0,,{\fad(120,180)}那一夜，风浪大得像要掀翻整片海，一艘小渔船，在黑暗里迷了方向。
+Dialogue: 0,0:00:25.79,0:00:32.32,Default,,0,0,0,,{\fad(120,180)}老周守着灯，整整一夜没有合眼，把最亮的那道光，推向风浪深处。
+Dialogue: 0,0:00:32.62,0:00:40.04,Default,,0,0,0,,{\fad(120,180)}天亮的时候，渔船平安靠了岸。而灯塔的灯，第一次在日出之前，熄灭了。
+Dialogue: 0,0:00:40.39,0:00:47.26,Default,,0,0,0,,{\fad(120,180)}从今往后，机器会替他守夜。可有些光，留在人的心里，永远都不会灭。

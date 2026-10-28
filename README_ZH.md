@@ -72,6 +72,7 @@ ViMax 是一个智能体驱动的视频创作框架，在统一且可扩展的�
 - **Web UI** — 在浏览器中管理命名项目、与 ViMax Agent 协作、上传源文件、查看产物和分镜进度、预览渲染并配置供应商。
 - **一致性制作流程** — 端到端协调参考图、首帧、机位连续性与最终组装。
 - **并行加速生成** — 并发生成可并行处理的镜头与媒体资产，缩短多镜头视频制作时间。
+- **普通话成片工厂（Mandarin Factory）** — 全自动端到端交付管线：普通话音频优先时间轴 → 简体中文字幕 → 原创配乐 → 剪辑/调色 → QC 质检门与自动返工 → 最终导出。规范见 `prompts/mandarin_director.md`，实现见 `mandarin_factory/`，样板片《守灯人》见 `projects/shoudengren/`（一条命令复现：`python -m mandarin_factory run projects/shoudengren`）。
 
 ---
 <table>

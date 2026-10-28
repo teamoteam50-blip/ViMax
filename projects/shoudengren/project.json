@@ -1,0 +1,617 @@
+{
+  "title": "守灯人",
+  "status": "done",
+  "user_brief": {
+    "raw": "用户下达 AUTONOMOUS CINEMATIC MANDARIN VIDEO FACTORY 总规范（工厂模式），要求把创意直接转化为可播放、可下载、可交付的视频成品；本单未附具体题材。",
+    "workflow_authorization": "工厂模式即视为 idea2video 端到端授权，不设分阶段确认门（见 prompts/mandarin_director.md）"
+  },
+  "assumptions": [
+    "用户未给具体题材 → 自主选题：原创普通话旁白微电影《守灯人》，作为工厂全链路样板片（单角色、单地点、最少镜头）",
+    "采用旁白（画外音）而非对白近景：普通话音频先行锁定时间轴，且免除口型同步缺陷",
+    "16:9、1920×1080、24fps；时长取讲完故事的最短值（约 55–65 秒）",
+    "当前沙盒无 LLM/图像/视频供应商 API 凭据：关键帧由执行代理的图像工具生成并人工质检，镜头运动用关键帧电影运镜合成（降级路径，交付时如实标注，绝不冒充视频模型镜头）",
+    "配乐无外部服务时由 mandarin_factory.music 程序化合成原创氛围垫+海浪（无版权依赖）"
+  ],
+  "target_platform": "generic",
+  "duration_seconds": 50.01,
+  "aspect_ratio": "16:9",
+  "width": 1920,
+  "height": 1080,
+  "fps": 24,
+  "language": "zh-CN",
+  "voice_mode": "narration",
+  "creative_direction": {
+    "logline": "东海灯塔最后一夜：守灯四十年的老周在风暴中最后一次点亮灯塔，送一艘渔船回家，天亮后与灯一起告别。",
+    "tone": "克制、温暖、告别的尊严感；不煽情过载",
+    "structure": "建立（灯塔百年）→ 人物日常（登塔点灯）→ 信条（回家的路）→ 风暴危机 → 守夜 → 黎明双重结局（船回家人离场）→ 主题句收束"
+  },
+  "story": {
+    "synopsis": "自动化改造前夜，年过六旬的守灯人老周照常登塔点灯。午夜风暴中一艘小渔船迷航，老周整夜守灯将其引回。黎明，渔船靠岸，灯塔的灯在日出前第一次熄灭，老周提着行李走下海岸小路。机器将替他守夜，但有些光留在人心里不灭。"
+  },
+  "characters": [
+    {
+      "id": "laozhou",
+      "name": "老周",
+      "description": "62岁中国守灯人，原创虚构人物",
+      "consistency_locks": "花白短胡须、海风刻纹的脸、深色绒线帽、藏青油布雨衣、灰色粗针毛衣；眼神平静坚定",
+      "reference_asset": "assets/char_laozhou_ref.jpg"
+    }
+  ],
+  "locations": [
+    {
+      "id": "lighthouse_reef",
+      "name": "东海礁石灯塔（外）"
+    },
+    {
+      "id": "lamp_room",
+      "name": "灯塔灯室与旋梯（内）"
+    },
+    {
+      "id": "storm_sea",
+      "name": "风暴海面"
+    },
+    {
+      "id": "coast_path",
+      "name": "黎明海岸石道"
+    }
+  ],
+  "visual_bible": {
+    "palette": "深青海盐色 + 暖琥珀灯光，尾声转黎明金",
+    "camera": "ARRI Alexa 写实摄影；慢推/横移为主，无手持抖动",
+    "grade": "轻对比与饱和提升（eq contrast 1.05 / saturation 1.08）+ 轻锐化，首尾淡黑"
+  },
+  "audio_bible": {
+    "narration": "中年男声，现代标准普通话，自然有呼吸感，不播音腔；逐句合成后实测时长锁定时间轴",
+    "music": "原创程序化氛围：Dm9–Bbmaj7–Fmaj9–A7sus 和声垫 + 低频海浪，-16 LUFS 成片响度目标",
+    "mix": "人声前置，配乐 0.16 线性增益垫底，loudnorm 母带"
+  },
+  "script": [
+    {
+      "id": "L1",
+      "shot_id": "shot01",
+      "speaker": "旁白",
+      "kind": "narration",
+      "text": "在东海最远的礁石上，有一座灯塔，亮了一百一十年。",
+      "audio": "audio/line01.mp3",
+      "duration_seconds": 4.62
+    },
+    {
+      "id": "L2",
+      "shot_id": "shot02",
+      "speaker": "旁白",
+      "kind": "narration",
+      "text": "守灯人老周，每天爬一百二十八级台阶，只为在天黑之前，把灯点亮。",
+      "audio": "audio/line02.mp3",
+      "duration_seconds": 6.14
+    },
+    {
+      "id": "L3",
+      "shot_id": "shot03",
+      "speaker": "旁白",
+      "kind": "narration",
+      "text": "他常说，灯亮着，海上的人，心里就有一条回家的路。",
+      "audio": "audio/line03.mp3",
+      "duration_seconds": 5.07
+    },
+    {
+      "id": "L4",
+      "shot_id": "shot04",
+      "speaker": "旁白",
+      "kind": "narration",
+      "text": "那一夜，风浪大得像要掀翻整片海，一艘小渔船，在黑暗里迷了方向。",
+      "audio": "audio/line04.mp3",
+      "duration_seconds": 6.61
+    },
+    {
+      "id": "L5",
+      "shot_id": "shot05",
+      "speaker": "旁白",
+      "kind": "narration",
+      "text": "老周守着灯，整整一夜没有合眼，把最亮的那道光，推向风浪深处。",
+      "audio": "audio/line05.mp3",
+      "duration_seconds": 6.53
+    },
+    {
+      "id": "L6",
+      "shot_id": "shot06",
+      "speaker": "旁白",
+      "kind": "narration",
+      "text": "天亮的时候，渔船平安靠了岸。而灯塔的灯，第一次在日出之前，熄灭了。",
+      "audio": "audio/line06.mp3",
+      "duration_seconds": 7.42
+    },
+    {
+      "id": "L7",
+      "shot_id": "shot06",
+      "speaker": "旁白",
+      "kind": "narration",
+      "text": "从今往后，机器会替他守夜。可有些光，留在人的心里，永远都不会灭。",
+      "audio": "audio/line07.mp3",
+      "duration_seconds": 6.87
+    }
+  ],
+  "lyrics": [],
+  "assets": [
+    {
+      "id": "char_laozhou_ref",
+      "kind": "character_reference",
+      "path": "assets/char_laozhou_ref.jpg",
+      "qc": "人工视觉检查通过：年龄/服饰/气质与角色锁一致"
+    },
+    {
+      "id": "kf01",
+      "kind": "keyframe",
+      "path": "assets/shot01_establishing.jpg",
+      "qc": "通过"
+    },
+    {
+      "id": "kf02",
+      "kind": "keyframe",
+      "path": "assets/shot02_stairs.jpg",
+      "qc": "通过（提灯登梯，与参考同一人）"
+    },
+    {
+      "id": "kf03",
+      "kind": "keyframe",
+      "path": "assets/shot03_lens.jpg",
+      "qc": "通过（minor：手部细节略粗糙，慢推可接受，已记缺陷日志）"
+    },
+    {
+      "id": "kf04",
+      "kind": "keyframe",
+      "path": "assets/shot04_boat_storm.jpg",
+      "qc": "通过"
+    },
+    {
+      "id": "kf05",
+      "kind": "keyframe",
+      "path": "assets/shot05_vigil.jpg",
+      "qc": "通过"
+    },
+    {
+      "id": "kf06",
+      "kind": "keyframe",
+      "path": "assets/shot06_dawn.jpg",
+      "qc": "通过（灯塔已熄、渔船入港、人物远去，结局信息完整）"
+    }
+  ],
+  "storyboard": [
+    {
+      "shot_id": "card_title",
+      "beat": "片名《守灯人》"
+    },
+    {
+      "shot_id": "shot01",
+      "beat": "大远景建立：百年灯塔与东海黄昏风暴前夜"
+    },
+    {
+      "shot_id": "shot02",
+      "beat": "人物日常：提灯登一百二十八级旋梯（仰角）"
+    },
+    {
+      "shot_id": "shot03",
+      "beat": "信条特写：擦拭/点亮菲涅尔透镜"
+    },
+    {
+      "shot_id": "shot04",
+      "beat": "危机：渔船在风暴中迷航，远处一束光"
+    },
+    {
+      "shot_id": "shot05",
+      "beat": "守夜：背影持电台，光束推入海面"
+    },
+    {
+      "shot_id": "shot06",
+      "beat": "黎明双结局+主题句：船靠岸、灯熄、人远行"
+    },
+    {
+      "shot_id": "card_end",
+      "beat": "尾卡：有些光，留在心里"
+    }
+  ],
+  "shots": [
+    {
+      "id": "card_title",
+      "source": "assets/card_title.jpg",
+      "source_kind": "card",
+      "motion": "static",
+      "duration": 2.4,
+      "transition_out": "fadeblack",
+      "card_title": "守 灯 人",
+      "card_subtitle": "一座灯塔，最后一夜",
+      "card_title_size": 128,
+      "description": "片头卡"
+    },
+    {
+      "id": "shot01",
+      "source": "assets/shot01_establishing.jpg",
+      "source_kind": "image",
+      "motion": "zoom_in",
+      "transition_out": "fade",
+      "description": "大远景：礁石上的灯塔亮起，海浪拍岸，黄昏欲暴"
+    },
+    {
+      "id": "shot02",
+      "source": "assets/shot02_stairs.jpg",
+      "source_kind": "image",
+      "motion": "zoom_in",
+      "transition_out": "fade",
+      "description": "俯视旋梯：老周提着马灯拾级而上"
+    },
+    {
+      "id": "shot03",
+      "source": "assets/shot03_lens.jpg",
+      "source_kind": "image",
+      "motion": "zoom_in",
+      "transition_out": "fade",
+      "description": "近景：老周侧脸与双手侍弄发亮的菲涅尔透镜"
+    },
+    {
+      "id": "shot04",
+      "source": "assets/shot04_boat_storm.jpg",
+      "source_kind": "image",
+      "motion": "pan_right",
+      "transition_out": "fade",
+      "description": "夜海宽镜：小渔船在巨浪中，一道灯塔光扫来"
+    },
+    {
+      "id": "shot05",
+      "source": "assets/shot05_vigil.jpg",
+      "source_kind": "image",
+      "motion": "zoom_in",
+      "transition_out": "fade",
+      "description": "灯室背影：老周守在光旁，手握电台话筒"
+    },
+    {
+      "id": "shot06",
+      "source": "assets/shot06_dawn.jpg",
+      "source_kind": "image",
+      "motion": "zoom_out",
+      "transition_out": "fadeblack",
+      "description": "黎明宽镜：海平如镜，灯塔已熄，老周提行李沿海岸石道远去，远处渔船在港"
+    },
+    {
+      "id": "card_end",
+      "source": "assets/card_end.jpg",
+      "source_kind": "card",
+      "motion": "static",
+      "duration": 2.8,
+      "card_title": "有些光，留在心里",
+      "card_subtitle": "《守灯人》 · 完",
+      "card_title_size": 72,
+      "description": "片尾卡"
+    }
+  ],
+  "audio_timeline": [
+    {
+      "line_id": "L1",
+      "shot_id": "shot01",
+      "kind": "narration",
+      "speaker": "旁白",
+      "text": "在东海最远的礁石上，有一座灯塔，亮了一百一十年。",
+      "audio": "audio/line01.mp3",
+      "start": 2.15,
+      "end": 6.77,
+      "duration": 4.62
+    },
+    {
+      "line_id": "L2",
+      "shot_id": "shot02",
+      "kind": "narration",
+      "speaker": "旁白",
+      "text": "守灯人老周，每天爬一百二十八级台阶，只为在天黑之前，把灯点亮。",
+      "audio": "audio/line02.mp3",
+      "start": 7.07,
+      "end": 13.21,
+      "duration": 6.14
+    },
+    {
+      "line_id": "L3",
+      "shot_id": "shot03",
+      "kind": "narration",
+      "speaker": "旁白",
+      "text": "他常说，灯亮着，海上的人，心里就有一条回家的路。",
+      "audio": "audio/line03.mp3",
+      "start": 13.51,
+      "end": 18.58,
+      "duration": 5.07
+    },
+    {
+      "line_id": "L4",
+      "shot_id": "shot04",
+      "kind": "narration",
+      "speaker": "旁白",
+      "text": "那一夜，风浪大得像要掀翻整片海，一艘小渔船，在黑暗里迷了方向。",
+      "audio": "audio/line04.mp3",
+      "start": 18.88,
+      "end": 25.49,
+      "duration": 6.61
+    },
+    {
+      "line_id": "L5",
+      "shot_id": "shot05",
+      "kind": "narration",
+      "speaker": "旁白",
+      "text": "老周守着灯，整整一夜没有合眼，把最亮的那道光，推向风浪深处。",
+      "audio": "audio/line05.mp3",
+      "start": 25.79,
+      "end": 32.32,
+      "duration": 6.53
+    },
+    {
+      "line_id": "L6",
+      "shot_id": "shot06",
+      "kind": "narration",
+      "speaker": "旁白",
+      "text": "天亮的时候，渔船平安靠了岸。而灯塔的灯，第一次在日出之前，熄灭了。",
+      "audio": "audio/line06.mp3",
+      "start": 32.62,
+      "end": 40.04,
+      "duration": 7.42
+    },
+    {
+      "line_id": "L7",
+      "shot_id": "shot06",
+      "kind": "narration",
+      "speaker": "旁白",
+      "text": "从今往后，机器会替他守夜。可有些光，留在人的心里，永远都不会灭。",
+      "audio": "audio/line07.mp3",
+      "start": 40.39,
+      "end": 47.26,
+      "duration": 6.87
+    }
+  ],
+  "edit_timeline": [
+    {
+      "shot_id": "card_title",
+      "index": 0,
+      "start": 0.0,
+      "end": 2.4,
+      "duration": 2.4,
+      "source": "assets/card_title.jpg",
+      "source_kind": "card",
+      "motion": "static",
+      "transition_out": "fadeblack",
+      "crossfade": 0.6
+    },
+    {
+      "shot_id": "shot01",
+      "index": 1,
+      "start": 1.8,
+      "end": 7.32,
+      "duration": 5.52,
+      "source": "assets/shot01_establishing.jpg",
+      "source_kind": "image",
+      "motion": "zoom_in",
+      "transition_out": "fade",
+      "crossfade": 0.6
+    },
+    {
+      "shot_id": "shot02",
+      "index": 2,
+      "start": 6.72,
+      "end": 13.76,
+      "duration": 7.04,
+      "source": "assets/shot02_stairs.jpg",
+      "source_kind": "image",
+      "motion": "zoom_in",
+      "transition_out": "fade",
+      "crossfade": 0.6
+    },
+    {
+      "shot_id": "shot03",
+      "index": 3,
+      "start": 13.16,
+      "end": 19.13,
+      "duration": 5.97,
+      "source": "assets/shot03_lens.jpg",
+      "source_kind": "image",
+      "motion": "zoom_in",
+      "transition_out": "fade",
+      "crossfade": 0.6
+    },
+    {
+      "shot_id": "shot04",
+      "index": 4,
+      "start": 18.53,
+      "end": 26.04,
+      "duration": 7.51,
+      "source": "assets/shot04_boat_storm.jpg",
+      "source_kind": "image",
+      "motion": "pan_right",
+      "transition_out": "fade",
+      "crossfade": 0.6
+    },
+    {
+      "shot_id": "shot05",
+      "index": 5,
+      "start": 25.44,
+      "end": 32.87,
+      "duration": 7.43,
+      "source": "assets/shot05_vigil.jpg",
+      "source_kind": "image",
+      "motion": "zoom_in",
+      "transition_out": "fade",
+      "crossfade": 0.6
+    },
+    {
+      "shot_id": "shot06",
+      "index": 6,
+      "start": 32.27,
+      "end": 47.81,
+      "duration": 15.54,
+      "source": "assets/shot06_dawn.jpg",
+      "source_kind": "image",
+      "motion": "zoom_out",
+      "transition_out": "fadeblack",
+      "crossfade": 0.6
+    },
+    {
+      "shot_id": "card_end",
+      "index": 7,
+      "start": 47.21,
+      "end": 50.01,
+      "duration": 2.8,
+      "source": "assets/card_end.jpg",
+      "source_kind": "card",
+      "motion": "static",
+      "transition_out": null,
+      "crossfade": 0.0
+    }
+  ],
+  "subtitles": [
+    {
+      "index": 1,
+      "start": 2.15,
+      "end": 6.77,
+      "text": "在东海最远的礁石上，有一座灯塔，亮了一百一十年。",
+      "line_id": "L1"
+    },
+    {
+      "index": 2,
+      "start": 7.07,
+      "end": 13.21,
+      "text": "守灯人老周，每天爬一百二十八级台阶，只为在天黑之前，把灯点亮。",
+      "line_id": "L2"
+    },
+    {
+      "index": 3,
+      "start": 13.51,
+      "end": 18.58,
+      "text": "他常说，灯亮着，海上的人，心里就有一条回家的路。",
+      "line_id": "L3"
+    },
+    {
+      "index": 4,
+      "start": 18.88,
+      "end": 25.49,
+      "text": "那一夜，风浪大得像要掀翻整片海，一艘小渔船，在黑暗里迷了方向。",
+      "line_id": "L4"
+    },
+    {
+      "index": 5,
+      "start": 25.79,
+      "end": 32.32,
+      "text": "老周守着灯，整整一夜没有合眼，把最亮的那道光，推向风浪深处。",
+      "line_id": "L5"
+    },
+    {
+      "index": 6,
+      "start": 32.62,
+      "end": 40.04,
+      "text": "天亮的时候，渔船平安靠了岸。而灯塔的灯，第一次在日出之前，熄灭了。",
+      "line_id": "L6"
+    },
+    {
+      "index": 7,
+      "start": 40.39,
+      "end": 47.26,
+      "text": "从今往后，机器会替他守夜。可有些光，留在人的心里，永远都不会灭。",
+      "line_id": "L7"
+    }
+  ],
+  "quality_gates": {
+    "G1_assets": {
+      "pass": true,
+      "missing": []
+    },
+    "G2_audio": {
+      "pass": true
+    },
+    "G6": {
+      "pass": true,
+      "probe": {
+        "duration": 50.0,
+        "has_video": true,
+        "has_audio": true,
+        "width": 1920,
+        "height": 1080,
+        "fps": 24.0,
+        "sample_rate": 48000
+      },
+      "planned_duration": 50.01
+    },
+    "G3": {
+      "pass": true,
+      "cues": 7,
+      "issues": []
+    },
+    "G4": {
+      "pass": true,
+      "black_windows": [],
+      "ignored_card_zones": [
+        [
+          0.0,
+          2.4
+        ],
+        [
+          47.21,
+          50.01
+        ]
+      ]
+    },
+    "G5": {
+      "pass": true,
+      "silence_windows": [],
+      "loudness": {
+        "input_i_lufs": -16.43,
+        "input_tp_dbtp": -1.35,
+        "input_lra": 2.8
+      }
+    },
+    "overall_pass": true
+  },
+  "defect_log": [
+    {
+      "ts": "2026-10-28",
+      "gate": "G1",
+      "severity": "minor",
+      "message": "shot03 手部细节略粗糙；采用慢推运镜并以叙事焦点（透镜光）覆盖，判定可接受",
+      "auto_fix": ""
+    }
+  ],
+  "revision_log": [
+    {
+      "ts": "2026-10-28T07:50:07+0000",
+      "action": "delivery_encode",
+      "detail": "母版(CRF18, 30.6MB, shoudengren_master.mp4 本地保留) → 交付版(CRF21)，音频流拷贝；交付版重跑全部质检门并通过"
+    }
+  ],
+  "deliverables": [
+    {
+      "kind": "final_video",
+      "path": "export/shoudengren_final.mp4",
+      "note": "H.264/AAC，烧录简体字幕"
+    },
+    {
+      "kind": "subtitles_srt",
+      "path": "export/shoudengren.srt",
+      "note": ""
+    },
+    {
+      "kind": "poster",
+      "path": "export/shoudengren_final_poster.jpg",
+      "note": ""
+    },
+    {
+      "kind": "script",
+      "path": "export/shoudengren_script.md",
+      "note": ""
+    },
+    {
+      "kind": "qc_report",
+      "path": "export/shoudengren_qc.json",
+      "note": ""
+    },
+    {
+      "kind": "project_state",
+      "path": "project.json",
+      "note": ""
+    }
+  ],
+  "render_options": {
+    "slug": "shoudengren",
+    "music_volume": 0.15,
+    "music_sea": true
+  }
+}

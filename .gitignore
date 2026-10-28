@@ -31,3 +31,13 @@ AGENTS.md
 project_plan/
 project_working/
 user_idea/
+
+# Mandarin factory runtime artifacts
+mandarin_factory/fonts/*.otf
+mandarin_factory/fonts/*.ttf
+mandarin_factory/fonts/*.ttc
+.render_work/
+*/.render_work/
+projects/*/export/*_master.mp4
+projects/*/audio/music_bed.wav
+projects/*/assets/card_*.jpg

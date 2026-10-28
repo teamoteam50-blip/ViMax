@@ -85,6 +85,7 @@ ViMax is an agentic video creation framework that connects narrative planning, v
 - **Web UI** — manage named projects, work with the ViMax Agent, upload source files, inspect artifacts and storyboard progress, preview renders, and configure providers from the browser.
 - **Consistent production pipeline** — coordinate references, first frames, camera continuity, and final assembly end to end.
 - **Parallelized generation** — generate compatible shots and media assets concurrently to accelerate multi-shot video production.
+- **Mandarin Factory** — autonomous end-to-end finishing pipeline for cinematic Mandarin deliverables: audio-first timeline, Simplified Chinese subtitles, original score, edit/color, QC quality gates with automatic rework, and final export. Spec: `prompts/mandarin_director.md`; implementation: `mandarin_factory/`; sample film: `projects/shoudengren/` (`python -m mandarin_factory run projects/shoudengren`).
 
 ---
 

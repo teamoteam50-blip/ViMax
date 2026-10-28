@@ -1,0 +1,48 @@
+{
+  "file": "shoudengren_final.mp4",
+  "gates": {
+    "G6": {
+      "pass": true,
+      "probe": {
+        "duration": 50.0,
+        "has_video": true,
+        "has_audio": true,
+        "width": 1920,
+        "height": 1080,
+        "fps": 24.0,
+        "sample_rate": 48000
+      },
+      "planned_duration": 50.01
+    },
+    "G3": {
+      "pass": true,
+      "cues": 7,
+      "issues": []
+    },
+    "G4": {
+      "pass": true,
+      "black_windows": [],
+      "ignored_card_zones": [
+        [
+          0.0,
+          2.4
+        ],
+        [
+          47.21,
+          50.01
+        ]
+      ]
+    },
+    "G5": {
+      "pass": true,
+      "silence_windows": [],
+      "loudness": {
+        "input_i_lufs": -16.43,
+        "input_tp_dbtp": -1.35,
+        "input_lra": 2.8
+      }
+    },
+    "overall_pass": true
+  },
+  "defects": []
+}
